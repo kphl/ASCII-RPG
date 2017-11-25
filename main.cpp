@@ -2,11 +2,11 @@
 #include <iostream>
 #include <vector>
 
-#include "grid.hh"
-#include "individu.hh"
-#include "monstre.hh"
-#include "objectif.hh"
-#include "rocher.hh"
+#include "Grid.hh"
+#include "Individu.hh"
+#include "Monstre.hh"
+#include "Objectif.hh"
+#include "Rocher.hh"
 
 int main()
 {
@@ -34,7 +34,7 @@ int main()
             }
             if(data[y][x] == 'T')
                 break;
-        }    
+        }
     }
 
     while(True){

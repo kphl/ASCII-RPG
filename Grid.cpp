@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-#include "grid.hh"
+#include "Grid.hh"
 
 
 Grid::Grid()
@@ -13,7 +13,7 @@ Grid::~Grid(){}
 
 Grid::Grid(std::vector<std::string> data){
     data_ = data;
-    for (std::vector<std::string>::iterator it = data_.begin() ; 
+    for (std::vector<std::string>::iterator it = data_.begin() ;
         it != data_.end() ; ++it){
         std::cout << *it << std::endl;
     }
