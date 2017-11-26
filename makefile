@@ -12,6 +12,9 @@ all : $(OBJS)
 %.o : %.cc
 	$(CXX) -c $(CFLAGS) $< -o $@
 
+quick :
+	$(CXX) $(LFLAGS) *.o -o $(EXE)
+
 clean :
 	$(RM) $(EXE) $(OBJS)
 
