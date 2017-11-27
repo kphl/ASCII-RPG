@@ -1,14 +1,12 @@
 #ifndef ROCHER_H
 #define ROCHER_H
 
-class Rocher
-{
-public:
-    Rocher(int x, int y);
-    virtual ~Rocher();
+#include "Object.hh"
 
-protected:
-    int x_, y_;
+class Rocher : public Object {
+public:
+    Rocher(Position pos);
+    virtual ~Rocher();
 };
 
 #endif

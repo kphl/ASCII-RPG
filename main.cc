@@ -1,20 +1,30 @@
-#include <string>
 #include <iostream>
+#include <string>
 #include <vector>
 
+/*
 #include "Grid.hh"
 #include "Individu.hh"
 #include "Monstre.hh"
 #include "Objectif.hh"
 #include "Rocher.hh"
+*/
+
+
+#include "configs.hh"
 
 int main()
 {
+/*
 	std::string dataTxt[] = {
 	    #include "data.txt"
 	};
-    //for (auto s : data) std::cout << s << std::endl;
+*/
+    for (auto s : map)
+        std::cout << s << std::endl;
 
+
+/*
     std::vector<std::string> data;
     for (auto s : dataTxt)
         data.push_back(s);
@@ -39,7 +49,7 @@ int main()
 
     while(True){
     }
+*/
 
-
-
+    return 1;
 }

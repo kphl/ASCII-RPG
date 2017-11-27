@@ -1,19 +1,31 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 
-class Grid
-{
+#include "Box.hh"
+
+class Grid {
 public:
-	Grid();
-	Grid(std::vector<std::string> data);
+    Grid();
+    Grid(unsigned int width, unsigned int height, std::string* data);
     virtual ~Grid();
 
+    unsigned int getWidth() const;
+    unsigned int getHeight() const;
+
+    std::unique_ptr<Object>& operator() (unsigned int x, unsigned int y);
+    std::unique_ptr<Object> const& operator() (unsigned int x, unsigned int y) const;
+
 protected:
-    std::vector<std::string> data_;
+    std::size_t findIndex(unsigned int x, unsigned int y) const;
+
+private:
+    unsigned int mWidth;
+    unsigned int mHeight;
+    std::vector<std::unique_ptr<Object>> mObjects;
 };
 
 #endif

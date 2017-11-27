@@ -6,7 +6,8 @@
 #define MAP_FILE "data.txt"
 
 #include <string>
-std::string map[] = {
+#include <vector>
+std::vector<std::string> map = {
     #include MAP_FILE
 };
 

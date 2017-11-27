@@ -1,17 +1,14 @@
 #ifndef MONSTRE_H
 #define MONSTRE_H
 
-class Monstre
-{
-public:
-	Monstre();
+#include "Movable.hh"
 
+class Monstre : public Movable {
+public:
+    Monstre(unsigned int x, unsigned int y);
     virtual ~Monstre();
 
-    void deplacement();
-
-protected:
-    int x, y;
+    void move(Position& pos) override;
 };
 
 #endif

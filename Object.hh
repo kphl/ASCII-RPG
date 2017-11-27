@@ -1,26 +1,22 @@
 #ifndef OBJECT_HH
 #define OBJECT_HH
 
+#include "Position.hh"
+
 class Object {
-    public:
-        Object();
-        Object(unsigned int x, unsigned int y, char symbol);
-        ~Object();
-        
-        unsigned int getX() const;
-        void setX(unsigned int x);
-        
-        unsigned int getY() const;
-        void setY(unsigned int y);
-        
-        char getSymbol() const;
-        void setContent(char symbol);
-    
-    private:
-        unsigned int mX;
-        unsigned int mY;
-        char mSymbol;
+public:
+    Object(unsigned int x, unsigned int y, char symbol);
+    virtual ~Object() = 0;
+
+    Position& pos();
+    Position const& pos() const;
+
+    char& symbol();
+    char const& symbol() const;
+
+protected:
+    Position mPosition;
+    char mSymbol;
 };
 
 #endif
-
