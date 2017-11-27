@@ -4,8 +4,7 @@
 class Rocher
 {
 public:
-	Rocher(int x, int y);
-
+    Rocher(int x, int y);
     virtual ~Rocher();
 
 protected:
