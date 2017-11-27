@@ -1,5 +1,7 @@
 # project instructions
 projet_v1.pdf
 
-# objects file
+# compilation files
 *.o
+a.out
+out
