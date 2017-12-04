@@ -17,7 +17,7 @@ quick : Position.o Grid.o objectFactory.o Object.o Rocher.o Objectif.o IMovable.
 	$(CXX) $(LFLAGS) *.o -o $(EXE)
 
 clean :
-	$(RM) $(EXE) $(OBJS)
+	$(RM) $(EXE) $(OBJS) a.out
 
 exam :
 	for i in *.cc; do g++ -ansi -pedantic -Wall -Wextra -std=c++1y $$i -c; done
