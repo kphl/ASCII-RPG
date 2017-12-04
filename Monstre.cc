@@ -1,7 +1,7 @@
 #include "Monstre.hh"
 
 Monstre::Monstre(unsigned int x, unsigned int y)
-    : Movable(x, y, 'M')
+    : Movable(x, y, 'm')
 { }
 
 Monstre::~Monstre(){

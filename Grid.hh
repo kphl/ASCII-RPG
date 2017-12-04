@@ -9,7 +9,7 @@
 
 class Grid {
 public:
-    Grid(unsigned int width, unsigned int height, std::string* data);
+    Grid(unsigned int width, unsigned int height, std::vector<std::string>& data);
     virtual ~Grid();
 
     unsigned int getWidth() const;

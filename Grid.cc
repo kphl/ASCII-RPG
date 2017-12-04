@@ -5,12 +5,12 @@
 #include "Object.hh"
 #include "objectFactory.hh"
 
-Grid::Grid(unsigned int width, unsigned int height, std::string* data)
+Grid::Grid(unsigned int width, unsigned int height, std::vector<std::string>& data)
     : mWidth(width), mHeight(height), mObjects(width * height)
 {
     for (unsigned int i=0;i<mWidth;++i) {
         for (unsigned int j=0;j<mHeight;++j) {
-            mObjects[findIndex(i, j)] = makeObject(j, i, data[j].at(i));;
+            mObjects[findIndex(j, i)] = makeObject(j, i, data.at(j).at(i));
         }
     }
 }
@@ -20,8 +20,8 @@ Grid::~Grid() {
 
 std::size_t Grid::findIndex(unsigned int x, unsigned int y) const {
     unsigned int index = x * mWidth + y;
-    if (index > mWidth * mHeight) {
-        throw std::out_of_range("out of range");
+    if (index >= mWidth * mHeight) {
+        throw std::out_of_range("out of range \\o/");
     }
 
     return index;

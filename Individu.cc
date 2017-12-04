@@ -1,7 +1,7 @@
 #include "Individu.hh"
 
 Individu::Individu(unsigned int x, unsigned int y)
-    : Movable(x, y, 'M')
+    : Movable(x, y, 'i')
 { }
 
 Individu::~Individu(){
