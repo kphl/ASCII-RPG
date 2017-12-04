@@ -1,17 +1,12 @@
 #ifndef OBJECTIF_H
 #define OBJECTIF_H
 
-class Objectif
-{
+#include "Object.hh"
+
+class Objectif : public Object {
 public:
-	Objectif(int x, int y);
-
+    Objectif(unsigned int x, unsigned int y);
     virtual ~Objectif();
-
-    void deplacement();
-
-protected:
-    int x_, y_;
 };
 
 #endif

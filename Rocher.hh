@@ -5,7 +5,7 @@
 
 class Rocher : public Object {
 public:
-    Rocher(Position pos);
+    Rocher(unsigned int x, unsigned int y);
     virtual ~Rocher();
 };
 

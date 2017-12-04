@@ -2,9 +2,8 @@
 #include <string>
 
 #include "Grid.hh"
+#include "Object.hh"
 #include "objectFactory.hh"
-
-Grid::Grid() {}
 
 Grid::Grid(unsigned int width, unsigned int height, std::string* data)
     : mWidth(width), mHeight(height), mObjects(width * height)
@@ -16,7 +15,8 @@ Grid::Grid(unsigned int width, unsigned int height, std::string* data)
     }
 }
 
-Grid::~Grid() {}
+Grid::~Grid() {
+}
 
 std::size_t Grid::findIndex(unsigned int x, unsigned int y) const {
     unsigned int index = x * mWidth + y;
@@ -25,6 +25,14 @@ std::size_t Grid::findIndex(unsigned int x, unsigned int y) const {
     }
 
     return index;
+}
+
+unsigned int Grid::getWidth() const {
+    return mWidth;
+}
+
+unsigned int Grid::getHeight() const {
+    return mHeight;
 }
 
 std::unique_ptr<Object>& Grid::operator() (unsigned int x, unsigned int y) {

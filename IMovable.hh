@@ -5,7 +5,7 @@
 
 class IMovable {
 public:
-    virtual ~IMovable() {}
+    virtual ~IMovable() = 0;
 
     virtual void move(Position& pos) = 0;
 };

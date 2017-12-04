@@ -5,8 +5,9 @@
 #include "Object.hh"
 
 class Movable : public Object, public IMovable {
-    Movable(Position& p, char symbol);
-    virtual ~Movable();
+public:
+    Movable(unsigned int x, unsigned int y, char symbol);
+    virtual ~Movable() = 0;
 
     virtual void move(Position& pos) = 0;
 };

@@ -22,7 +22,7 @@ std::unique_ptr<Object> makeObject(unsigned int x, unsigned int y, char c) {
         case 'o':
             o = std::make_unique<Rocher>(x, y);
             break;
-        default:
+        default: break;
     }
 
     return o;

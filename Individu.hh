@@ -1,17 +1,14 @@
 #ifndef INDIVIDU_H
 #define INDIVIDU_H
 
-class Individu
-{
-public:
-	Individu();
+#include "Movable.hh"
 
+class Individu : public Movable {
+public:
+    Individu(unsigned int x, unsigned int y);
     virtual ~Individu();
 
-    void deplacement();
-
-protected:
-    int x, y;
+    void move(Position& pos) override;
 };
 
 #endif

@@ -5,11 +5,10 @@
 #include <string>
 #include <vector>
 
-#include "Box.hh"
+#include "Object.hh"
 
 class Grid {
 public:
-    Grid();
     Grid(unsigned int width, unsigned int height, std::string* data);
     virtual ~Grid();
 
