@@ -31,3 +31,11 @@ void Position::setPosition(const Pos& p) {
     mPosition.x = p.x;
     mPosition.y = p.y;
 }
+
+unsigned int Position::getX() const{
+    return mPosition.x;
+}
+
+unsigned int Position::getY() const{
+    return mPosition.y;
+}

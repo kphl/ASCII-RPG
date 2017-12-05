@@ -20,6 +20,9 @@ public:
     void setPosition(const unsigned int x, const unsigned int y);
     void setPosition(const Pos& p);
 
+    unsigned int getX() const;
+    unsigned int getY() const;
+
 private:
     Pos mPosition;
 };
