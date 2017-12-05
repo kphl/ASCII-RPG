@@ -2,8 +2,11 @@
 #include <string>
 
 #include "Grid.hh"
+#include "Individu.hh"
 #include "Object.hh"
 #include "objectFactory.hh"
+#include "Monstre.hh"
+#include "Object.hh"
 
 Grid::Grid(unsigned int width, unsigned int height, std::vector<std::string>& data)
     : mWidth(width), mHeight(height), mObjects(width * height)
@@ -41,4 +44,42 @@ std::unique_ptr<Object>& Grid::operator() (unsigned int x, unsigned int y) {
 
 std::unique_ptr<Object> const& Grid::operator() (unsigned int x, unsigned int y) const {
     return mObjects.at(findIndex(x, y));
+}
+
+Individu* Grid::getIndividu() {
+    for (auto it = mObjects.begin();it!= mObjects.end();++it) {
+        if ((*it).get()) {
+            if ((*it)->symbol() == 'i') {
+                return static_cast<Individu*>((*it).get());
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+Objectif* Grid::getObjectif() {
+    for (auto it = mObjects.begin();it!= mObjects.end();++it) {
+        if ((*it).get()) {
+            if ((*it)->symbol() == 'T') {
+                return static_cast<Objectif*>((*it).get());
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+std::vector<Monstre*> Grid::getMonstres() {
+    std::vector<Monstre*> monstres;
+
+    for (auto it = mObjects.begin();it!= mObjects.end();++it) {
+        if ((*it).get()) {
+            if ((*it)->symbol() == 'm') {
+                monstres.push_back(static_cast<Monstre*>((*it).get()));
+            }
+        }
+    }
+
+    return monstres;
 }
