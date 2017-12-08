@@ -10,6 +10,9 @@ public:
     virtual ~Movable() = 0;
 
     virtual void move(Position& pos) = 0;
+
+protected:
+    Grid* mGrid;
 };
 
 #endif

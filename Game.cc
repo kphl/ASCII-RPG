@@ -12,8 +12,15 @@ Game::~Game(){
 void Game::update() {
 
     // update
+    Individu* individu = mGrid.getIndividu();
+
     // 1 = Individu
+    individu->move(mGrid.getObjectif()->pos());
+
     // 2 = Monstre
+    for (Monstre* m : mGrid.getMonstres()) {
+        m->move(individu->pos());
+    }
 }
 
 std::string const Game::drawGrid() const {
