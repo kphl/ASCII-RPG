@@ -1,4 +1,6 @@
 #include <sstream>
+#include <vector>
+#include <iostream>
 
 #include "Game.hh"
 
@@ -6,33 +8,52 @@ Game::Game(unsigned int width, unsigned int height, std::vector<std::string>& ma
     : mGrid(width, height, map)
 { }
 
-Game::~Game(){
+Game::~Game() {
 }
 
 void Game::update() {
-
-    // update
     Individu* individu = mGrid.getIndividu();
 
-    // 1 = Individu
-    individu->move(mGrid.getObjectif()->pos());
-
-    // 2 = Monstre
-    for (Monstre* m : mGrid.getMonstres()) {
-        m->move(individu->pos());
+    // Individu
+    std::vector<Position> possiblePositions = individu->thinkMove(mGrid.getObjectif()->pos());
+    
+    std::cout << "current pos = " << individu->pos().X() << " " << individu->pos().Y() << std::endl;
+    for (Position p : possiblePositions) {
+        std::cout << "check p = " << p.X() << " " << p.Y() << std::endl;
+        
+        if (!mGrid(p.X(), p.Y())) {
+            std::cout << "select" << std::endl;
+            
+            mGrid(p.X(), p.Y()) = std::move(mGrid(individu->pos().X(), individu->pos().Y()));
+            individu->move(p);
+            break;
+        }
     }
+
+    // Monstre
+    /*for (Monstre* m : mGrid.getMonstres()) {
+        vector<Position> possiblePositions = m->move(individu->pos());
+        for (Position p : possiblePositions) {
+            if (!mGrid(p.x, p.y)) {
+                mGrid(m.Position().x, m.Position().y) = nullptr;
+                m->move(p);
+                mGrid(p.x, p.y) = m;
+                break;
+            }
+        }
+    }*/
 }
 
 std::string const Game::drawGrid() const {
     std::stringstream s;
 
-    for (unsigned int i(0);i<mGrid.getHeight();++i) {
-        for (unsigned int j(0);j<mGrid.getWidth();++j) {
-            if (mGrid(i, j)) {
-                s << mGrid(i, j)->symbol();
+    for (unsigned int y(0);y<mGrid.getHeight();++y) {
+        for (unsigned int x(0);x<mGrid.getWidth();++x) {
+            if (mGrid(x, y)) {
+                s << mGrid(x, y)->symbol();
             }
             else {
-                s << ' ';
+                s << '.';
             }
         }
         s << '\n';

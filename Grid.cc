@@ -11,9 +11,9 @@
 Grid::Grid(unsigned int width, unsigned int height, std::vector<std::string>& data)
     : mWidth(width), mHeight(height), mObjects(width * height)
 {
-    for (unsigned int i=0;i<mWidth;++i) {
-        for (unsigned int j=0;j<mHeight;++j) {
-            mObjects[findIndex(j, i)] = makeObject(j, i, data.at(j).at(i));
+    for (unsigned int y=0;y<mHeight;++y) {
+        for (unsigned int x=0;x<mWidth;++x) {
+            mObjects[findIndex(x, y)] = makeObject(x, y, data.at(y).at(x));
         }
     }
 }
@@ -22,7 +22,7 @@ Grid::~Grid() {
 }
 
 std::size_t Grid::findIndex(unsigned int x, unsigned int y) const {
-    unsigned int index = x * mWidth + y;
+    unsigned int index = y * mWidth + x;
     if (index >= mWidth * mHeight) {
         throw std::out_of_range("out of range \\o/");
     }

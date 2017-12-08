@@ -32,10 +32,19 @@ void Position::setPosition(const Pos& p) {
     mPosition.y = p.y;
 }
 
-unsigned int Position::getX() const{
+unsigned int const& Position::X() const {
     return mPosition.x;
 }
 
-unsigned int Position::getY() const{
+unsigned int const& Position::Y() const {
     return mPosition.y;
 }
+
+unsigned int& Position::X() {
+    return mPosition.x;
+}
+
+unsigned int& Position::Y() {
+    return mPosition.y;
+}
+

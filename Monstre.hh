@@ -8,6 +8,7 @@ public:
     Monstre(unsigned int x, unsigned int y);
     virtual ~Monstre();
 
+    std::vector<Position> thinkMove(Position& target) const override;
     void move(Position& pos) override;
 };
 

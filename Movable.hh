@@ -9,10 +9,8 @@ public:
     Movable(unsigned int x, unsigned int y, char symbol);
     virtual ~Movable() = 0;
 
+    virtual std::vector<Position> thinkMove(Position& target) const = 0;
     virtual void move(Position& pos) = 0;
-
-protected:
-    Grid* mGrid;
 };
 
 #endif
