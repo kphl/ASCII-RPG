@@ -27,6 +27,8 @@ public:
 
     static unsigned int distance(Position const& a, Position const& b);
 
+    friend bool operator ==(Position const& a, Position const&b);
+
 private:
     Pos mPosition;
 };

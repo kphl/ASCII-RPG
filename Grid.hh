@@ -21,9 +21,9 @@ public:
     std::unique_ptr<Object>& operator() (unsigned int x, unsigned int y);
     std::unique_ptr<Object> const& operator() (unsigned int x, unsigned int y) const;
 
-    Individu* getIndividu();
-    Objectif* getObjectif();
-    std::vector<Monstre*> getMonstres();
+    Individu* getIndividu() const;
+    Objectif* getObjectif() const;
+    std::vector<Monstre*> getMonstres() const;
 
 protected:
     std::size_t findIndex(unsigned int x, unsigned int y) const;

@@ -46,7 +46,7 @@ std::unique_ptr<Object> const& Grid::operator() (unsigned int x, unsigned int y)
     return mObjects.at(findIndex(x, y));
 }
 
-Individu* Grid::getIndividu() {
+Individu* Grid::getIndividu() const {
     for (auto it = mObjects.begin();it!= mObjects.end();++it) {
         if ((*it).get()) {
             if ((*it)->symbol() == 'i') {
@@ -58,7 +58,7 @@ Individu* Grid::getIndividu() {
     return nullptr;
 }
 
-Objectif* Grid::getObjectif() {
+Objectif* Grid::getObjectif() const {
     for (auto it = mObjects.begin();it!= mObjects.end();++it) {
         if ((*it).get()) {
             if ((*it)->symbol() == 'T') {
@@ -70,7 +70,7 @@ Objectif* Grid::getObjectif() {
     return nullptr;
 }
 
-std::vector<Monstre*> Grid::getMonstres() {
+std::vector<Monstre*> Grid::getMonstres() const {
     std::vector<Monstre*> monstres;
 
     for (auto it = mObjects.begin();it!= mObjects.end();++it) {

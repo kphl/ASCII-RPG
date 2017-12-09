@@ -50,6 +50,11 @@ unsigned int& Position::Y() {
     return mPosition.y;
 }
 
+bool operator ==(Position const& a, Position const&b) {
+    return a.mPosition.x == b.mPosition.x
+        && a.mPosition.y == b.mPosition.y;
+}
+
 unsigned int Position::distance(Position const& a, Position const& b) {
     int x_diff = a.mPosition.x - b.mPosition.x;
     int y_diff = a.mPosition.y - b.mPosition.y;

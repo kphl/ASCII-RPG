@@ -19,7 +19,7 @@ void Game::update() {
     std::vector<Position> possiblePositions = individu->thinkMove(objectif->pos());
 
     for (Position p : possiblePositions) {
-        if (!mGrid(p.X(), p.Y())) {
+        if (!mGrid(p.X(), p.Y()) || p == objectif->pos()) {
             mGrid(p.X(), p.Y()) = std::move(mGrid(individu->pos().X(), individu->pos().Y()));
             individu->move(p);
             break;
@@ -64,5 +64,14 @@ bool Game::isFinished() const {
     // 1 = Individu goes to Target
     // 2 = Monstre eats Individu
 
-    return false;
+    return mGrid.getObjectif() == nullptr;
+}
+
+std::string Game::getWinnerTag() const {
+    if (mGrid.getObjectif() == nullptr) {
+        return "Individu";
+    }
+
+    // Let's assume monster won when it's not the player ¯\_(ツ)_/¯ 
+    return "Monsters";
 }

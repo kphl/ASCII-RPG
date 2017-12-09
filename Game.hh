@@ -15,6 +15,7 @@ public:
     std::string const drawGrid() const;
 
     bool isFinished() const;
+    std::string getWinnerTag() const;
 
 private:
     Grid mGrid;
