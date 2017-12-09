@@ -21,5 +21,13 @@ int main() {
     std::cout << g.drawGrid() << std::endl;
     g.update();
     std::cout << g.drawGrid() << std::endl;
+    g.update();
+    std::cout << g.drawGrid() << std::endl;
+    g.update();
+    std::cout << g.drawGrid() << std::endl;
+    g.update();
+    std::cout << g.drawGrid() << std::endl;
+    g.update();
+    std::cout << g.drawGrid() << std::endl;
     return 1;
 }

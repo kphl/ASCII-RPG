@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "Position.hh"
 
 Position::Position()
@@ -48,3 +50,12 @@ unsigned int& Position::Y() {
     return mPosition.y;
 }
 
+unsigned int Position::distance(Position const& a, Position const& b) {
+    int x_diff = a.mPosition.x - b.mPosition.x;
+    int y_diff = a.mPosition.y - b.mPosition.y;
+
+    int x_diff_abs = std::abs(x_diff);
+    int y_diff_abs = std::abs(y_diff);
+
+    return x_diff_abs + y_diff_abs;
+}

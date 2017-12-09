@@ -25,6 +25,8 @@ public:
     unsigned int const& X() const;
     unsigned int const& Y() const;
 
+    static unsigned int distance(Position const& a, Position const& b);
+
 private:
     Pos mPosition;
 };

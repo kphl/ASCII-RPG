@@ -12,7 +12,7 @@ all : $(OBJS)
 %.o : %.cc
 	$(CXX) -c $(CFLAGS) $< -o $@
 
-quick : Position.o Grid.o objectFactory.o Object.o Rocher.o Objectif.o IMovable.o Movable.o Individu.o Monstre.o Game.o
+quick : configs.o Position.o Grid.o objectFactory.o Object.o Rocher.o Objectif.o IMovable.o Movable.o Individu.o Monstre.o Game.o
 	$(CXX) -c $(CFLAGS) main.cc
 	$(CXX) $(LFLAGS) *.o -o $(EXE)
 

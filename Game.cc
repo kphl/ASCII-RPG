@@ -13,17 +13,13 @@ Game::~Game() {
 
 void Game::update() {
     Individu* individu = mGrid.getIndividu();
+    Objectif* objectif = mGrid.getObjectif();
 
     // Individu
-    std::vector<Position> possiblePositions = individu->thinkMove(mGrid.getObjectif()->pos());
-    
-    std::cout << "current pos = " << individu->pos().X() << " " << individu->pos().Y() << std::endl;
+    std::vector<Position> possiblePositions = individu->thinkMove(objectif->pos());
+
     for (Position p : possiblePositions) {
-        std::cout << "check p = " << p.X() << " " << p.Y() << std::endl;
-        
         if (!mGrid(p.X(), p.Y())) {
-            std::cout << "select" << std::endl;
-            
             mGrid(p.X(), p.Y()) = std::move(mGrid(individu->pos().X(), individu->pos().Y()));
             individu->move(p);
             break;

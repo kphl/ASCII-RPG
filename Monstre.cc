@@ -8,6 +8,7 @@ Monstre::~Monstre(){
 }
 
 std::vector<Position> Monstre::thinkMove(Position& target) const {
+    target = target;
     /*int x_diff = mPosition().x - pos().x;
     int y_diff = mPosition().y - pos().y;
 
@@ -26,7 +27,7 @@ std::vector<Position> Monstre::thinkMove(Position& target) const {
         p.y = mPosition().y += 1 * (y_diff > 0 ? 1 : -1);
     }
     possiblePositions.push_back(p);
-    
+
     Position p2;
     if (x_diff_abs > y_diff_abs) {
         p2.x = mPosition().x;
@@ -37,7 +38,7 @@ std::vector<Position> Monstre::thinkMove(Position& target) const {
         p2.y = mPosition().y;
     }
     possiblePositions.push_back(p2)
-    
+
     return possiblePositions;*/
     return std::vector<Position>(1);
 }
@@ -46,4 +47,3 @@ void Monstre::move(Position& pos) {
     mPosition.X() = pos.X();
     mPosition.Y() = pos.Y();
 }
-

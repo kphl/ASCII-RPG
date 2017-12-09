@@ -7,8 +7,6 @@
 
 #include <string>
 #include <vector>
-std::vector<std::string> MAP = {
-    #include MAP_FILE
-};
+extern std::vector<std::string> MAP;
 
 #endif

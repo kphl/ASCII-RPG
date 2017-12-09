@@ -13,49 +13,17 @@ Individu::Individu(unsigned int x, unsigned int y)
 Individu::~Individu(){
 }
 
-
-
 std::vector<Position> Individu::thinkMove(Position& target) const {
-    std::vector<std::pair<unsigned int, Position>> possiblePositionsDistances;
-    
-    possiblePositionsDistances.push_back(std::pair<unsigned int, Position>(
-        (target.X() - mPosition.X()) + std::abs((int)target.Y() - ( (int)mPosition.Y() + (int)Individu::MOVE_STEP)),
-        Position(mPosition.X(), mPosition.Y() + Individu::MOVE_STEP)
-        
-    ));
-    
-    possiblePositionsDistances.push_back(std::pair<unsigned int, Position>(
-        (target.X() - mPosition.X()) + std::abs((int)target.Y() - ( (int)mPosition.Y() - (int)Individu::MOVE_STEP)),
-        Position(mPosition.X(), mPosition.Y() - Individu::MOVE_STEP)
-    ));
-    
-    possiblePositionsDistances.push_back(std::pair<unsigned int, Position>(
-        (target.X() - (mPosition.X() + Individu::MOVE_STEP)) + (target.Y() - mPosition.Y()),
-        Position(mPosition.X() + Individu::MOVE_STEP, mPosition.Y())
-    ));
-    
-    possiblePositionsDistances.push_back(std::pair<unsigned int, Position>(
-        std::abs((int)target.X() - ((int)mPosition.X() - (int)Individu::MOVE_STEP)) + (target.Y()),
-        Position(mPosition.X() - Individu::MOVE_STEP, mPosition.Y())
-    ));
-    
-    std::sort(
-        possiblePositionsDistances.begin(),
-        possiblePositionsDistances.end(),
-        [](std::pair<unsigned int, Position> const & a, std::pair<unsigned int, Position> const & b){ 
-            return a.first < b.first;
-        }
-    );
-    
+    std::vector<Position> possiblePositions = Movable::findMovesOrthogonal(mPosition, Individu::MOVE_STEP);
+    std::vector<std::pair<unsigned int, Position>> positionDistances =  Movable::computeDistances(possiblePositions, target);
+    Movable::sortMoves(positionDistances);
+
     std::vector<Position> sortedPositions;
-    for (auto it(possiblePositionsDistances.begin());it != possiblePositionsDistances.end();++it) {
-        std::cout << it->first << "(list) : "
-            << ((Position)it->second).X() << " "
-            << ((Position)it->second).Y() << std::endl;
-        
+
+    for (auto it(positionDistances.begin());it != positionDistances.end();++it) {
         sortedPositions.push_back(it->second);
     }
-    
+
     return sortedPositions;
 }
 
@@ -63,6 +31,3 @@ void Individu::move(Position& pos) {
     mPosition.X() = pos.X();
     mPosition.Y() = pos.Y();
 }
-
-
-
