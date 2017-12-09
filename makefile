@@ -12,8 +12,10 @@ all : $(OBJS)
 %.o : %.cc
 	$(CXX) -c $(CFLAGS) $< -o $@
 
-quick : configs.o Position.o Grid.o objectFactory.o Object.o Rocher.o Objectif.o IMovable.o Movable.o Individu.o Monstre.o Game.o
-	$(CXX) -c $(CFLAGS) main.cc
+quick : cquick lquick
+
+cquick : $(OBJS)
+lquick :
 	$(CXX) $(LFLAGS) *.o -o $(EXE)
 
 clean :
