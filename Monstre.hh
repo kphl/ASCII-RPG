@@ -10,6 +10,8 @@ public:
 
     std::vector<Position> thinkMove(Position& target) const override;
     void move(Position& pos) override;
+
+    static const unsigned int MOVE_STEP = 1;
 };
 
 #endif

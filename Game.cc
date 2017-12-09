@@ -26,18 +26,27 @@ void Game::update() {
         }
     }
 
+    // if the player hit the target, the game is finished
+    if (isFinished()) {
+        return;
+    }
+
     // Monstre
-    /*for (Monstre* m : mGrid.getMonstres()) {
-        vector<Position> possiblePositions = m->move(individu->pos());
-        for (Position p : possiblePositions) {
-            if (!mGrid(p.x, p.y)) {
-                mGrid(m.Position().x, m.Position().y) = nullptr;
+    for (Monstre* m : mGrid.getMonstres()) {
+        std::vector<Position> monsterPossiblePositions = m->thinkMove(individu->pos());
+        for (Position p : monsterPossiblePositions) {
+            if (!mGrid(p.X(), p.Y()) || p == individu->pos()) {
+                mGrid(p.X(), p.Y()) = std::move(mGrid(m->pos().X(), m->pos().Y()));
                 m->move(p);
-                mGrid(p.x, p.y) = m;
                 break;
             }
         }
-    }*/
+
+        // If the current monster eat the player, the game is finished
+        if (isFinished()) {
+            return;
+        }
+    }
 }
 
 std::string const Game::drawGrid() const {
@@ -59,12 +68,8 @@ std::string const Game::drawGrid() const {
 }
 
 bool Game::isFinished() const {
-
-    // check
-    // 1 = Individu goes to Target
-    // 2 = Monstre eats Individu
-
-    return mGrid.getObjectif() == nullptr;
+    return mGrid.getObjectif() == nullptr
+        || mGrid.getIndividu() == nullptr;
 }
 
 std::string Game::getWinnerTag() const {
@@ -72,6 +77,6 @@ std::string Game::getWinnerTag() const {
         return "Individu";
     }
 
-    // Let's assume monster won when it's not the player ¯\_(ツ)_/¯ 
+    // Let's assume monster won when it's not the player ¯\_(ツ)_/¯
     return "Monsters";
 }
