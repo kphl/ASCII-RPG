@@ -7,6 +7,7 @@
 #include "objectFactory.hh"
 #include "Monstre.hh"
 #include "Object.hh"
+#include "Thune.hh"
 
 Grid::Grid(unsigned int width, unsigned int height, std::vector<std::string>& data)
     : mWidth(width), mHeight(height), mObjects(width * height)
@@ -75,6 +76,18 @@ Potion* Grid::getPotion() const {
         if ((*it).get()) {
             if ((*it)->symbol() == '*') {
                 return static_cast<Potion*>((*it).get());
+            }
+        }
+    }
+
+    return nullptr;
+}
+
+Thune* Grid::getThune() const {
+    for (auto it = mObjects.begin();it!= mObjects.end();++it) {
+        if ((*it).get()) {
+            if ((*it)->symbol() == '$') {
+                return static_cast<Thune*>((*it).get());
             }
         }
     }

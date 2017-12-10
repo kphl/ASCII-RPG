@@ -9,8 +9,12 @@
 #include "SmartMonstre.hh"
 
 Game::Game(unsigned int width, unsigned int height, std::vector<std::string>& map)
-    : mGrid(width, height, map)
-{ }
+    : mGrid(width, height, map), mThunePresent(false)
+{
+    if (mGrid.getThune()) {
+        mThunePresent = true;
+    }
+}
 
 Game::~Game() {
 }
@@ -63,8 +67,9 @@ std::string const Game::drawGrid() const {
 }
 
 bool Game::isFinished() const {
-    return mGrid.getObjectif() == nullptr
-        || mGrid.getIndividu() == nullptr;
+    return !mGrid.getObjectif()
+        || !mGrid.getIndividu()
+        || (mThunePresent && !mGrid.getThune());
 }
 
 std::string Game::getWinnerTag() const {
@@ -72,8 +77,11 @@ std::string Game::getWinnerTag() const {
         return "\"5 more minutes plzzz\" :c";
     }
 
-    if (mGrid.getObjectif() == nullptr) {
+    if (!mGrid.getObjectif()) {
         return "Individu";
+    }
+    else if (mThunePresent && !mGrid.getThune()) {
+        return "Individu 🏝️";
     }
 
     // Let's assume monster won when it's not the player ¯\_(ツ)_/¯

@@ -5,6 +5,7 @@
 #include "Objectif.hh"
 #include "Potion.hh"
 #include "SmartMonstre.hh"
+#include "Thune.hh"
 #include "Monstre.hh"
 #include "Rocher.hh"
 
@@ -29,6 +30,9 @@ std::unique_ptr<Object> makeObject(unsigned int x, unsigned int y, char c) {
             break;
         case '*':
             o = std::make_unique<Potion>(x, y);
+            break;
+        case '$':
+            o = std::make_unique<Thune>(x, y);
             break;
         default: break;
     }

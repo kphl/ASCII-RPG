@@ -22,6 +22,7 @@ protected:
 
 private:
     Grid mGrid;
+    bool mThunePresent;
 };
 
 #endif
