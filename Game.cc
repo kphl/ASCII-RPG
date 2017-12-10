@@ -57,6 +57,10 @@ bool Game::isFinished() const {
 }
 
 std::string Game::getWinnerTag() const {
+    if (!isFinished()) {
+        return "\"5 more minutes plzzz\" :c";
+    }
+
     if (mGrid.getObjectif() == nullptr) {
         return "Individu";
     }
