@@ -75,7 +75,7 @@ std::vector<Monstre*> Grid::getMonstres() const {
 
     for (auto it = mObjects.begin();it!= mObjects.end();++it) {
         if ((*it).get()) {
-            if ((*it)->symbol() == 'm') {
+            if ((*it)->symbol() == 'm' || (*it)->symbol() == 'M') {
                 monstres.push_back(static_cast<Monstre*>((*it).get()));
             }
         }

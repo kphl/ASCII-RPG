@@ -20,6 +20,7 @@ public:
     /// Basical AI algorithms
 
     static std::vector<Position> findMovesOrthogonal(Position const& current, unsigned int step);
+    static std::vector<Position> findMovesDiagonal(Position const& current, unsigned int step);
 
     static std::vector<std::pair<unsigned int, Position>> computeDistances(std::vector<Position> const& positions, Position const& target);
 

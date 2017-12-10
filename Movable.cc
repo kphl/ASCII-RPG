@@ -46,6 +46,37 @@ std::vector<Position> Movable::findMovesOrthogonal(Position const& current, unsi
     return possiblePositions;
 }
 
+std::vector<Position> Movable::findMovesDiagonal(Position const& current, unsigned int step) {
+    std::vector<Position> possiblePositions;
+
+    while(step > 0) {
+        possiblePositions.push_back(
+            Position(
+                current.X() > step + MAP_WIDTH ? MAP_WIDTH : current.X() + step,
+                current.Y() > step - MAP_HEIGHT ? MAP_HEIGHT : current.Y() + step ));
+
+        possiblePositions.push_back(
+            Position(
+                current.X() > step + MAP_WIDTH ? MAP_WIDTH : current.X() + step,
+                current.Y() < step ? 0 : current.Y() - step ));
+
+        possiblePositions.push_back(
+            Position(
+                current.X() < step ? 0 : current.X() - step,
+                current.Y() > step - MAP_HEIGHT ? MAP_HEIGHT : current.Y() + step ));
+
+        possiblePositions.push_back(
+            Position(
+                current.X() < step ? 0 : current.X() - step,
+                current.Y() < step ? 0 : current.Y() - step ));
+
+        --step;
+    }
+
+    return possiblePositions;
+}
+
+
 std::vector<std::pair<unsigned int, Position>> Movable::computeDistances(std::vector<Position> const& positions, Position const& target) {
     std::vector<std::pair<unsigned int, Position>> distances;
 
