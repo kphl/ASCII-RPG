@@ -13,7 +13,7 @@ Individu::Individu(unsigned int x, unsigned int y)
 Individu::~Individu(){
 }
 
-std::vector<Position> Individu::thinkMove(Position& target) const {
+std::vector<Position> Individu::thinkMove(Position const& target) const {
     std::vector<Position> possiblePositions = Movable::findMovesOrthogonal(mPosition, Individu::MOVE_STEP);
     std::vector<std::pair<unsigned int, Position>> positionDistances =  Movable::computeDistances(possiblePositions, target);
     Movable::sortMoves(positionDistances);

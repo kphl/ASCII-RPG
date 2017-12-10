@@ -10,7 +10,7 @@ public:
     virtual ~IMovable() = 0;
 
     // compute possible movements
-    virtual std::vector<Position> thinkMove(Position& target) const = 0;
+    virtual std::vector<Position> thinkMove(Position const& target) const = 0;
 
     // do the move to pos
     virtual void move(Position& pos) = 0;

@@ -7,7 +7,7 @@ Monstre::Monstre(unsigned int x, unsigned int y)
 Monstre::~Monstre(){
 }
 
-std::vector<Position> Monstre::thinkMove(Position& target) const {
+std::vector<Position> Monstre::thinkMove(Position const& target) const {
     std::vector<Position> possiblePositions = Movable::findMovesOrthogonal(mPosition, Monstre::MOVE_STEP);
     std::vector<std::pair<unsigned int, Position>> positionDistances =  Movable::computeDistances(possiblePositions, target);
     Movable::sortMoves(positionDistances);

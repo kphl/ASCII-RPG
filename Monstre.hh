@@ -8,7 +8,7 @@ public:
     Monstre(unsigned int x, unsigned int y);
     virtual ~Monstre();
 
-    std::vector<Position> thinkMove(Position& target) const override;
+    std::vector<Position> thinkMove(Position const& target) const override;
     void move(Position& pos) override;
 
     static const unsigned int MOVE_STEP = 1;
