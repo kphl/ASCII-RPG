@@ -5,11 +5,11 @@
 #include "Game.hh"
 
 void draw(Game const& g) {
-#if REFRESH_TERM == TRUE
+#ifdef REFRESH_TERM
     std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME));
     std::system("clear");
-    std::cout << g.drawGrid() << std::endl;
 #endif
+    std::cout << g.drawGrid() << std::endl;
 }
 
 int main() {
