@@ -1,4 +1,8 @@
+#include <vector>
+#include <utility>
+
 #include "Monstre.hh"
+#include "Position.hh"
 
 Monstre::Monstre(unsigned int x, unsigned int y)
     : Movable(x, y, 'm')
