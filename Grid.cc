@@ -70,6 +70,18 @@ Objectif* Grid::getObjectif() const {
     return nullptr;
 }
 
+Potion* Grid::getPotion() const {
+    for (auto it = mObjects.begin();it!= mObjects.end();++it) {
+        if ((*it).get()) {
+            if ((*it)->symbol() == '*') {
+                return static_cast<Potion*>((*it).get());
+            }
+        }
+    }
+
+    return nullptr;
+}
+
 std::vector<Monstre*> Grid::getMonstres() const {
     std::vector<Monstre*> monstres;
 

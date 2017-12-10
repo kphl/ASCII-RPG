@@ -9,6 +9,7 @@
 #include "Object.hh"
 #include "Monstre.hh"
 #include "Objectif.hh"
+#include "Potion.hh"
 
 class Grid {
 public:
@@ -23,6 +24,7 @@ public:
 
     Individu* getIndividu() const;
     Objectif* getObjectif() const;
+    Potion* getPotion() const;
     std::vector<Monstre*> getMonstres() const;
 
 protected:

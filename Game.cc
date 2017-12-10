@@ -2,6 +2,11 @@
 #include <vector>
 
 #include "Game.hh"
+#include "Individu.hh"
+#include "Monstre.hh"
+#include "Objectif.hh"
+#include "Potion.hh"
+#include "SmartMonstre.hh"
 
 Game::Game(unsigned int width, unsigned int height, std::vector<std::string>& map)
     : mGrid(width, height, map)
@@ -13,9 +18,15 @@ Game::~Game() {
 void Game::update() {
     Individu* individu = mGrid.getIndividu();
     Objectif* objectif = mGrid.getObjectif();
+    Potion* potion = mGrid.getPotion();
+
+    Object* iTarget = objectif;
+    if (potion) {
+        iTarget = potion;
+    }
 
     // Individu
-    moveMovable(*individu, *objectif);
+    moveMovable(*individu, *iTarget);
 
     // if the player hit the target, the game is finished
     if (isFinished()) {
