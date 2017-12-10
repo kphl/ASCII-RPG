@@ -17,6 +17,9 @@ public:
     bool isFinished() const;
     std::string getWinnerTag() const;
 
+protected:
+    void moveMovable(Movable& movable, Object const& target);
+
 private:
     Grid mGrid;
 };

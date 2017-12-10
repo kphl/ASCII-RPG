@@ -16,15 +16,7 @@ void Game::update() {
     Objectif* objectif = mGrid.getObjectif();
 
     // Individu
-    std::vector<Position> possiblePositions = individu->thinkMove(objectif->pos());
-
-    for (Position p : possiblePositions) {
-        if (!mGrid(p.X(), p.Y()) || p == objectif->pos()) {
-            mGrid(p.X(), p.Y()) = std::move(mGrid(individu->pos().X(), individu->pos().Y()));
-            individu->move(p);
-            break;
-        }
-    }
+    moveMovable(*individu, *objectif);
 
     // if the player hit the target, the game is finished
     if (isFinished()) {
@@ -33,14 +25,7 @@ void Game::update() {
 
     // Monstre
     for (Monstre* m : mGrid.getMonstres()) {
-        std::vector<Position> monsterPossiblePositions = m->thinkMove(individu->pos());
-        for (Position p : monsterPossiblePositions) {
-            if (!mGrid(p.X(), p.Y()) || p == individu->pos()) {
-                mGrid(p.X(), p.Y()) = std::move(mGrid(m->pos().X(), m->pos().Y()));
-                m->move(p);
-                break;
-            }
-        }
+        moveMovable(*m, *individu);
 
         // If the current monster eat the player, the game is finished
         if (isFinished()) {
@@ -79,4 +64,17 @@ std::string Game::getWinnerTag() const {
 
     // Let's assume monster won when it's not the player ¯\_(ツ)_/¯
     return "Monsters";
+}
+
+void Game::moveMovable(Movable& movable, Object const& target) {
+    std::vector<Position> possiblePositions = movable.thinkMove(target.pos());
+
+    for (Position p : possiblePositions) {
+        // the movement is possible only if the destination cell is nullptr or the target
+        if (!mGrid(p.X(), p.Y()) || p == target.pos()) {
+            mGrid(p.X(), p.Y()) = std::move(mGrid(movable.pos().X(), movable.pos().Y()));
+            movable.move(p);
+            break;
+        }
+    }
 }
