@@ -66,13 +66,13 @@ std::string Game::getWinnerTag() const {
 }
 
 void Game::moveMovable(Movable& movable, Object const& target) {
+    Position pos = movable.pos();
     std::vector<Position> possiblePositions = movable.thinkMove(target.pos());
 
     for (Position p : possiblePositions) {
         // the movement is possible only if the destination cell is nullptr or the target
-        if (!mGrid(p.X(), p.Y()) || p == target.pos()) {
-            mGrid(p.X(), p.Y()) = std::move(mGrid(movable.pos().X(), movable.pos().Y()));
-            movable.move(p);
+        if (movable.move(p, mGrid(p.X(), p.Y()).get())) {
+            mGrid(p.X(), p.Y()) = std::move(mGrid(pos.X(), pos.Y()));
             break;
         }
     }

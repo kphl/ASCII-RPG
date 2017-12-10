@@ -1,8 +1,9 @@
 #include "objectFactory.hh"
 
-#include "Object.hh"
 #include "Individu.hh"
+#include "Object.hh"
 #include "Objectif.hh"
+#include "Potion.hh"
 #include "Monstre.hh"
 #include "Rocher.hh"
 
@@ -21,6 +22,9 @@ std::unique_ptr<Object> makeObject(unsigned int x, unsigned int y, char c) {
             break;
         case 'o':
             o = std::make_unique<Rocher>(x, y);
+            break;
+        case '*':
+            o = std::make_unique<Potion>(x, y);
             break;
         default: break;
     }

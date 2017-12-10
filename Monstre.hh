@@ -8,8 +8,9 @@ public:
     Monstre(unsigned int x, unsigned int y);
     virtual ~Monstre();
 
+    unsigned int stepDistance() const override;
     std::vector<Position> thinkMove(Position const& target) const override;
-    void move(Position& pos) override;
+    bool move(Position const& pos, Object const* object) override;
 
     static const unsigned int MOVE_STEP = 1;
 };

@@ -5,13 +5,18 @@
 
 class Individu : public Movable {
 public:
+    static const unsigned int DEFAULT_STEP_DISTANCE = 1;
+    static const unsigned int BOOSTED_STEP_DISTANCE = 2;
+
     Individu(unsigned int x, unsigned int y);
     virtual ~Individu();
 
+    unsigned int stepDistance() const override;
     std::vector<Position> thinkMove(Position const& target) const override;
-    void move(Position& pos) override;
+    bool move(Position const& pos, Object const* object) override;
 
-    static const unsigned int MOVE_STEP = 1;
+private:
+    unsigned int mStepDistance;
 };
 
 #endif

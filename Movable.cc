@@ -19,25 +19,29 @@ Movable::~Movable(){
 std::vector<Position> Movable::findMovesOrthogonal(Position const& current, unsigned int step) {
     std::vector<Position> possiblePositions;
 
-    possiblePositions.push_back(
-        Position(
-            current.X(),
-            current.Y() > step - MAP_HEIGHT ? MAP_HEIGHT : current.Y() + step ));
+    while(step > 0) {
+        possiblePositions.push_back(
+            Position(
+                current.X(),
+                current.Y() > step - MAP_HEIGHT ? MAP_HEIGHT : current.Y() + step ));
 
-    possiblePositions.push_back(
-        Position(
-            current.X(),
-            current.Y() < step ? 0 : current.Y() - step ));
+        possiblePositions.push_back(
+            Position(
+                current.X(),
+                current.Y() < step ? 0 : current.Y() - step ));
 
-    possiblePositions.push_back(
-        Position(
-            current.X() > step + MAP_WIDTH ? MAP_WIDTH : current.X() + step,
-            current.Y() ));
+        possiblePositions.push_back(
+            Position(
+                current.X() > step + MAP_WIDTH ? MAP_WIDTH : current.X() + step,
+                current.Y() ));
 
-    possiblePositions.push_back(
-        Position(
-            current.X() < step ? 0 : current.X() - step,
-            current.Y() ));
+        possiblePositions.push_back(
+            Position(
+                current.X() < step ? 0 : current.X() - step,
+                current.Y() ));
+
+        --step;
+    }
 
     return possiblePositions;
 }
